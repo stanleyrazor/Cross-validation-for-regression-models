@@ -7,4 +7,8 @@ lm_kfold - The k fold cross validation function for regression models.
 
 The parameters within are:
 
+formulae is linear regression formulae
+df is the data frame used to train the model
+folds are number of instances to omit in validation
+times are the number of times to validate
 
