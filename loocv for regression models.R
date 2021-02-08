@@ -1,6 +1,6 @@
 ## Leave one out cross validation
 
-lm_loocv <- function(formula, df, predictors)
+lm_loocv <- function(formula, df)
 {
   # formulae is lm formulae
   # df is the dataframe
@@ -23,6 +23,14 @@ lm_loocv <- function(formula, df, predictors)
   train_pred <- vector()
   acc_vec <- vector()
   temp_pred <- vector()
+  
+  # counting no of predictors in the model
+  predictors <- lm(formula = formula, data = df) %>%
+    coefficients() %>%
+    length()
+  
+  # intercept vectors
+  # the +1 is to cater for intercept
   main_coef <- rep(0, predictors+1)
   avg_coef <- vector()
   
