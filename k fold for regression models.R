@@ -1,4 +1,4 @@
-lm_kfold <- function(formula, df, predictors, folds, times)
+lm_kfold <- function(formula, df, folds, times)
 {
   # formulae is lm formulae
   # df is the data frame
@@ -24,7 +24,13 @@ lm_kfold <- function(formula, df, predictors, folds, times)
   temp_pred <- vector()
   full_pred <- vector()
   
+  # counting no of predictors in the model
+  predictors <- lm(formula = formula, data = df) %>%
+    coefficients() %>%
+    length()
+  
   # intercept vectors
+  # the +1 is to cater for intercept
   main_coef <- rep(0, predictors+1)
   avg_coef <- vector()
   
